@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+	int data;
+	struct node *next;
+}*first,*last,*t;
+
+void cr(int arr[],int n){
+   first=(struct node*)malloc(sizeof(struct node));
+   first->data=arr[0];
+   first->next=NULL;
+   last=first;
+   for(int i=1;i<n;i++){
+       t=(struct node*)malloc(sizeof(struct node));
+       t->data=arr[i];
+       t->next=NULL;
+       last->next=t;
+       last=t;
+   }
+}
+
+int add(struct node *p){
+    int sum=0;
+    while(p!=NULL){
+        sum+=p->data;
+        p=p->next;
+    }
+    return sum;
+}
+int main(){
+    cout<<"enter the num:\n";
+    int n;
+    cin>>n;
+    int arr[n];
+    cout<<"enter the vals:\n";
+    for(int i=0;i<n;i++)
+    cin>>arr[i];
+    cr(arr,n);
+    cout<<"sum: ";
+   cout<<add(first);
+    return 0;
+}
